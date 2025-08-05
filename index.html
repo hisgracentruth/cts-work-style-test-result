@@ -3,54 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>업무 성향 16개 유형</title>
+    <title>업무 성향 16개 유형 - 팀 관리 및 멘토링 가이드</title>
     <meta name="description" content="당신의 업무 스타일과 최적의 역할을 찾아보세요. 팀장 멘토링 포인트와 업무 궁합 분석까지!">
-    <meta name="keywords" content="업무성향, 성격유형, 팀관리, 멘토링, 업무궁합">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="">
-    <meta property="og:title" content="업무 성향 16개 유형">
-    <meta property="og:description" content="당신의 업무 스타일과 최적의 역할을 찾아보세요">
-    <meta property="og:image" content="">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="">
-    <meta property="twitter:title" content="업무 성향 16개 유형">
-    <meta property="twitter:description" content="당신의 업무 스타일과 최적의 역할을 찾아보세요">
-    <meta property="twitter:image" content="">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Noto Sans KR', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #f8fafc;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
             min-height: 100vh;
             color: #1e293b;
             line-height: 1.6;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 1.5rem;
         }
-
+        
         .header {
             text-align: center;
             margin-bottom: 2.5rem;
             padding: 2rem 1rem;
         }
-
+        
         .header h1 {
             font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 800;
@@ -59,47 +38,43 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -0.02em;
         }
-
+        
         .header p {
-            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            font-size: 1.125rem;
             color: #475569;
             max-width: 500px;
             margin: 0 auto;
         }
-
+        
         .search-container {
             max-width: 400px;
             margin: 0 auto 2rem;
         }
-
+        
         .search-input {
             width: 100%;
             padding: 0.875rem 1.25rem;
             background: white;
             border: 2px solid #e2e8f0;
             border-radius: 12px;
-            font-size: 0.9375rem;
-            color: #1e293b;
+            font-size: 1rem;
             outline: none;
             transition: all 0.3s ease;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         }
-
+        
         .search-input:focus {
             border-color: #6366f1;
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-            transform: translateY(-1px);
         }
-
+        
         .types-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.25rem;
             margin-bottom: 2rem;
         }
-
+        
         .type-card {
             background: white;
             border: 2px solid #e2e8f0;
@@ -107,96 +82,69 @@
             padding: 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
-
-        .type-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.05), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .type-card:hover::before {
-            left: 100%;
-        }
-
+        
         .type-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            background: #f8fafc;
+            border-color: #6366f1;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
-
-        .type-card.hidden {
-            display: none;
-        }
-
+        
+        .type-card.hidden { display: none; }
+        
         .type-code {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.375rem 0.875rem;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            background: linear-gradient(135deg, #6366f1, #ec4899);
             color: white;
+            padding: 0.375rem 0.875rem;
             border-radius: 8px;
             font-weight: 700;
             font-size: 0.8125rem;
-            font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Consolas', monospace;
-            letter-spacing: 0.05em;
             margin-bottom: 0.875rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: inline-block;
         }
-
+        
         .type-header {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
             gap: 0.875rem;
         }
-
+        
         .type-emoji {
             font-size: 2.5rem;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
         }
-
+        
         .type-card:hover .type-emoji {
             transform: scale(1.1) rotate(8deg);
         }
-
+        
         .type-info h3 {
             font-size: 1.125rem;
             color: #1e293b;
             margin-bottom: 0.375rem;
             font-weight: 700;
-            letter-spacing: -0.01em;
         }
-
+        
         .type-info p {
             color: #64748b;
             font-size: 0.8125rem;
-            font-weight: 400;
         }
-
+        
         .type-description {
             color: #475569;
             font-size: 0.875rem;
             line-height: 1.5;
             margin-bottom: 1rem;
         }
-
+        
         .type-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
-
+        
         .tag {
             background: #f1f5f9;
             color: #475569;
@@ -205,7 +153,8 @@
             font-size: 0.75rem;
             font-weight: 500;
         }
-
+        
+        /* 모달 스타일 */
         .detail-modal {
             display: none;
             position: fixed;
@@ -216,9 +165,8 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 1000;
             overflow-y: auto;
-            backdrop-filter: blur(8px);
         }
-
+        
         .modal-content {
             background: white;
             max-width: 900px;
@@ -227,51 +175,44 @@
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
         }
-
+        
         .modal-header {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            background: linear-gradient(135deg, #6366f1, #ec4899);
             padding: 2rem 1.5rem;
             border-radius: 16px 16px 0 0;
             text-align: center;
             position: relative;
         }
-
+        
         .modal-emoji {
             font-size: 3rem;
             margin-bottom: 0.75rem;
             display: block;
-            animation: float 3s ease-in-out infinite;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
+        
         .modal-title {
             font-size: 2rem;
             margin-bottom: 0.375rem;
             font-weight: 800;
             color: white;
         }
-
+        
         .modal-nickname {
             font-size: 1.125rem;
             opacity: 0.9;
             color: white;
         }
-
+        
         .modal-body {
             padding: 2rem;
         }
-
+        
         .section {
             margin-bottom: 2rem;
         }
-
+        
         .section h3 {
             color: #1e293b;
             font-size: 1.25rem;
@@ -280,49 +221,40 @@
             border-bottom: 2px solid #6366f1;
             font-weight: 700;
         }
-
+        
         .section p {
             margin-bottom: 1rem;
             color: #475569;
             line-height: 1.6;
         }
-
+        
         .section ul {
             list-style: none;
             padding: 0;
             display: grid;
             gap: 0.875rem;
         }
-
+        
         .section li {
             padding: 1.25rem;
             background: #f8fafc;
             border-radius: 8px;
             border-left: 4px solid #6366f1;
-            transition: all 0.3s ease;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         }
-
-        .section li:hover {
-            transform: translateX(4px);
-            background: #f1f5f9;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
+        
         .section li strong {
             color: #1e293b;
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
-
+        
         .mentoring-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
-            margin-bottom: 1rem;
         }
-
+        
         .mentoring-card {
             background: #fff7ed;
             border: 1px solid #fed7aa;
@@ -330,95 +262,82 @@
             padding: 1rem;
             border-left: 4px solid #ea580c;
         }
-
+        
         .mentoring-card h4 {
             color: #ea580c;
             margin-bottom: 0.5rem;
             font-weight: 600;
             font-size: 0.9rem;
         }
-
+        
         .mentoring-card p {
             color: #9a3412;
             font-size: 0.85rem;
             line-height: 1.5;
             margin: 0;
         }
-
+        
         .compatibility-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1rem;
         }
-
+        
         .compatibility-item {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
             border-radius: 8px;
             padding: 1rem;
-            border-left: 4px solid #16a34a;
+            border-left: 4px solid;
         }
-
-        .compatibility-item.good {
+        
+        .compatibility-item.best {
             background: #f0fdf4;
-            border-color: #bbf7d0;
+            border-color: #16a34a;
             border-left-color: #16a34a;
         }
-
-        .compatibility-item.okay {
+        
+        .compatibility-item.good {
             background: #fffbeb;
-            border-color: #fde68a;
+            border-color: #d97706;
             border-left-color: #d97706;
         }
-
-        .compatibility-item.caution {
-            background: #fef2f2;
-            border-color: #fecaca;
-            border-left-color: #dc2626;
-        }
-
+        
         .compatibility-header {
             display: flex;
             align-items: center;
             margin-bottom: 0.5rem;
             gap: 0.5rem;
         }
-
+        
         .compatibility-emoji {
             font-size: 1.2rem;
         }
-
+        
         .compatibility-type {
             font-weight: 700;
             font-size: 0.9rem;
         }
-
+        
         .compatibility-name {
             font-size: 0.85rem;
             opacity: 0.8;
         }
-
+        
         .compatibility-description {
             font-size: 0.85rem;
             line-height: 1.4;
             margin: 0;
         }
-
-        .compatibility-item.good .compatibility-type,
-        .compatibility-item.good .compatibility-description {
+        
+        .compatibility-item.best .compatibility-type,
+        .compatibility-item.best .compatibility-description {
             color: #166534;
         }
-
-        .compatibility-item.okay .compatibility-type,
-        .compatibility-item.okay .compatibility-description {
+        
+        .compatibility-item.good .compatibility-type,
+        .compatibility-item.good .compatibility-description {
             color: #92400e;
         }
-
-        .compatibility-item.caution .compatibility-type,
-        .compatibility-item.caution .compatibility-description {
-            color: #991b1b;
-        }
-
+        
         .close-btn {
             position: absolute;
             top: 0.875rem;
@@ -431,17 +350,15 @@
             height: 2rem;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
+        
         .close-btn:hover {
             background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
         }
-
+        
         .footer {
             text-align: center;
             padding: 2rem 1rem;
@@ -450,46 +367,19 @@
             color: #64748b;
             font-size: 0.875rem;
         }
-
+        
+        /* 반응형 */
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .types-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1rem;
-            }
-            
-            .type-card {
-                padding: 1.25rem;
-            }
-            
-            .modal-content {
-                margin: 0.875rem;
-            }
-            
-            .modal-body {
-                padding: 1.5rem;
-            }
-
-            .mentoring-grid,
-            .compatibility-grid {
-                grid-template-columns: 1fr;
-            }
+            .container { padding: 1rem; }
+            .types-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+            .modal-content { margin: 0.875rem; }
+            .modal-body { padding: 1.5rem; }
+            .mentoring-grid, .compatibility-grid { grid-template-columns: 1fr; }
         }
-
+        
         @media (max-width: 480px) {
-            .types-grid {
-                grid-template-columns: 1fr;
-                gap: 0.875rem;
-            }
-            
-            .type-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
+            .types-grid { grid-template-columns: 1fr; }
+            .type-header { flex-direction: column; text-align: center; gap: 0.5rem; }
         }
     </style>
 </head>
@@ -501,257 +391,346 @@
         </div>
 
         <div class="search-container">
-            <input 
-                type="text" 
-                class="search-input" 
-                placeholder="성향 유형이나 닉네임으로 검색..." 
-                id="searchInput"
-            >
+            <input type="text" class="search-input" placeholder="성향 유형이나 닉네임으로 검색..." id="searchInput">
         </div>
 
-        <div class="types-grid" id="typesGrid">
-            <!-- 16개 카드가 여기에 동적으로 생성됩니다 -->
-        </div>
+        <div class="types-grid" id="typesGrid"></div>
         
         <div class="footer">
             <p>© 2024 업무 성향 16개 유형. 팀 관리와 멘토링을 위한 실무 가이드</p>
         </div>
     </div>
 
-    <!-- 상세 모달 -->
     <div id="detailModal" class="detail-modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
-            <div id="modalContent">
-                <!-- 동적으로 생성됩니다 -->
-            </div>
+            <div id="modalContent"></div>
         </div>
     </div>
 
     <script>
-        // 16개 업무 성향 유형 데이터
         const personalityTypes = {
             FAEI: {
-                nickname: '창의적인 전략가',
-                emoji: '🦊',
+                nickname: '창의적인 전략가', emoji: '🦊',
                 description: '영리하고 민첩한 여우처럼, 변화무쌍한 상황에서도 논리적으로 사고하며 새로운 아이디어를 열정적으로 추진합니다.',
                 tags: ['창의적', '전략적', '혁신적', '논리적'],
-                strengths: [
-                    '기발한 아이디어 창출 : 창의적이면서 실행 가능한 아이디어를 만들어냅니다.',
-                    '빠른 실행력과 적응력 : 좋은 생각이 떠오르면 신속하게 행동에 옮기고 변화를 주도합니다.',
-                    '탁월한 설득력과 표현력 : 자신의 논리를 가지고 남을 설득하는 능력이 뛰어납니다.'
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: '신사업 기획, 브랜드 전략, 벤처 투자 심사, 콘텐츠 기획·제작',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
                 ],
-                cautions: [
-                    '지속성 부족 : 끝까지 마무리하는 인내가 다소 부족할 수 있습니다.',
-                    '조직적 세밀함 부족 : 세부 실행 단계에서 체계적인 작업을 견디기 어려워할 수 있습니다.',
-                    '독단과 갈등 가능성 : 토론 시 지나치게 공격적이거나 독설적이 될 수 있습니다.'
+                compatibility: {
+                    best: [{ type: 'SAEM', nickname: '체계적 관리자', emoji: '🐝', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'SNEM', nickname: '조화로운 중재자', emoji: '🐾', description: '좋은 파트너 설명 1' },
+                        { type: 'FAEM', nickname: '현장형 문제해결자', emoji: '🦦', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            FAEM: {
+                nickname: '현장형 문제해결자', emoji: '🦦',
+                description: '영리한 수달처럼, 어려운 상황에서도 금방 해결책을 찾아내고 사람들과 폭넓게 교류하며 문제를 해결합니다.',
+                tags: ['실무적', '대인관계', '문제해결', '적응력'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: 'CX 개선, 운영 혁신, 매장·현장 운영, 고객 경험 설계',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
                 ],
+                compatibility: {
+                    best: [{ type: 'SNRI', nickname: '조용한 개척자', emoji: '🦉', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'SARM', nickname: '성실한 실무자', emoji: '🐜', description: '좋은 파트너 설명 1' },
+                        { type: 'FNEI', nickname: '열정적인 모험가', emoji: '🐬', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            FARI: {
+                nickname: '자유로운 혁신가', emoji: '🐱',
+                description: '독립심 강한 고양이처럼, 규칙에 얽매이지 않고 자유롭게 사고하며 혼자서도 혁신적인 아이디어를 실행합니다.',
+                tags: ['독립적', '혁신적', '전문적', '자유로운'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: '프로토타입 개발, 오픈소스 리드, UX 프로토타이핑, 앱·게임 제작',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
+                ],
+                compatibility: {
+                    best: [{ type: 'SAEI', nickname: '타고난 조직 리더', emoji: '🐻', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'FARM', nickname: '침착한 해결사', emoji: '🐢', description: '좋은 파트너 설명 1' },
+                        { type: 'FNRI', nickname: '내향적 창조자', emoji: '🦝', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            FARM: {
+                nickname: '침착한 해결사', emoji: '🐢',
+                description: '차분한 거북이처럼, 자기 페이스대로 꾸준히 나아가며 묵묵히 자신의 역할을 완수하는 안정적인 해결사입니다.',
+                tags: ['침착한', '논리적', '전문적', '안정적'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: 'SRE·인프라 운영, 정보보안 분석, IT 헬프데스크, 네트워크 모니터링',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
+                ],
+                compatibility: {
+                    best: [{ type: 'SNEI', nickname: '카리스마 비전형 리더', emoji: '🐶', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'FARI', nickname: '자유로운 혁신가', emoji: '🐱', description: '좋은 파트너 설명 1' },
+                        { type: 'SARM', nickname: '성실한 실무자', emoji: '🐜', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            FNEI: {
+                nickname: '열정적인 모험가', emoji: '🐬',
+                description: '사회적인 돌고래처럼, 창의적이고 열정적인 성격으로 사람들과 어울리며 새로운 시도를 마다하지 않습니다.',
+                tags: ['열정적', '사교적', '창의적', '모험적'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: '디지털 마케팅, 그로스 해킹, SNS 콘텐츠 기획, 이벤트 기획',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
+                ],
+                compatibility: {
+                    best: [{ type: 'SARI', nickname: '과묵한 전략가', emoji: '🐙', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'SNRM', nickname: '헌신적인 조력자', emoji: '🐘', description: '좋은 파트너 설명 1' },
+                        { type: 'FAEM', nickname: '현장형 문제해결자', emoji: '🦦', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            FNEM: {
+                nickname: '친화력 높은 조력자', emoji: '🦜',
+                description: '다채로운 앵무새처럼, 주변 분위기를 띄우고 모두와 두루 잘 지내며 팀의 분위기메이커 역할을 합니다.',
+                tags: ['친화적', '적응력', '서비스', '분위기메이커'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: '사내 문화 프로그램, 온보딩 운영, 커뮤니티 매니지먼트, 내부 커뮤니케이션',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
+                ],
+                compatibility: {
+                    best: [{ type: 'SAEI', nickname: '타고난 조직 리더', emoji: '🐻', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'SARI', nickname: '과묵한 전략가', emoji: '🐙', description: '좋은 파트너 설명 1' },
+                        { type: 'FNRM', nickname: '온화한 조정자', emoji: '🐼', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            FNRI: {
+                nickname: '내향적 창조자', emoji: '🦝',
+                description: '호기심 많은 라쿤처럼, 혼자서 창의적으로 문제를 해결하고 자유로운 영감으로 혁신적인 작품을 만듭니다.',
+                tags: ['창조적', '독립적', '내향적', '혁신적'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: '인디 게임·앱 개발, 모션·그래픽 디자인, 개인 콘텐츠 창작, 실험적 R&D',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
+                ],
+                compatibility: {
+                    best: [{ type: 'SNEI', nickname: '카리스마 비전형 리더', emoji: '🐶', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'SAEM', nickname: '체계적 관리자', emoji: '🐝', description: '좋은 파트너 설명 1' },
+                        { type: 'FARI', nickname: '자유로운 혁신가', emoji: '🐱', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            FNRM: {
+                nickname: '온화한 조정자', emoji: '🐼',
+                description: '온순한 판다처럼, 마음이 유연하고 공감력이 있으며 자기만의 방식으로 조용히 팀의 조화를 만듭니다.',
+                tags: ['온화한', '공감적', '적응적', '조화로운'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: 'HR 운영, 조직문화·ER, People Ops, 감성 UX 리서치',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
+                ],
+                compatibility: {
+                    best: [{ type: 'SAEI', nickname: '타고난 조직 리더', emoji: '🐻', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'SNRI', nickname: '조용한 개척자', emoji: '🦉', description: '좋은 파트너 설명 1' },
+                        { type: 'FNEM', nickname: '친화력 높은 조력자', emoji: '🦜', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            SAEI: {
+                nickname: '타고난 조직 리더', emoji: '🐻',
+                description: '강인한 곰처럼, 명확한 목표와 계획으로 팀을 이끌며 논리적 설득력과 추진력을 동시에 발휘합니다.',
+                tags: ['리더십', '논리적', '결과지향', '추진력'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: '사업 개발, 전략·투자 분석, 프로젝트 매니지먼트, B2B 영업',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
+                ],
+                compatibility: {
+                    best: [{ type: 'FNEM', nickname: '친화력 높은 조력자', emoji: '🦜', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'FNRM', nickname: '온화한 조정자', emoji: '🐼', description: '좋은 파트너 설명 1' },
+                        { type: 'FARI', nickname: '자유로운 혁신가', emoji: '🐱', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            SAEM: {
+                nickname: '체계적 관리자', emoji: '🐝',
+            SAEM: {
+                nickname: '체계적 관리자', emoji: '🐝',
+                description: '조직적인 꿀벌처럼, 원칙과 절차를 중시하며 팀의 업무를 체계적으로 관리하고 효율을 극대화합니다.',
+                tags: ['체계적', '관리적', '소통', '개선'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
+                recommendedRole: '품질보증(QA/QC), 내부 감사·컴플라이언스, 프로세스 분석, 문서화·표준화',
+                mentoring: [
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
+                ],
+                compatibility: {
+                    best: [{ type: 'FAEI', nickname: '창의적인 전략가', emoji: '🦊', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'FNRI', nickname: '내향적 창조자', emoji: '🦝', description: '좋은 파트너 설명 1' },
+                        { type: 'SARM', nickname: '성실한 실무자', emoji: '🐜', description: '좋은 파트너 설명 2' }
+                    ]
+                }
+            },
+            SARI: {
+                nickname: '과묵한 전략가', emoji: '🐙',
+                description: '지략적인 문어처럼, 조용히 상황을 살피며 데이터에 기반한 분석적 판단으로 치밀한 전략을 수립합니다.',
+                tags: ['전략적', '분석적', '신중한', '계획적'],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
                 recommendedRole: '데이터 전략, 비즈니스 분석, 시장·정책 리서치, 성과·OKR 설계',
                 mentoring: [
-                    {
-                        title: '유연성 개발',
-                        description: '계획 수립 시 여러 시나리오를 고려하고, 예상치 못한 변화에 대응할 수 있는 유연성을 기르세요.'
-                    },
-                    {
-                        title: '소통 능력 향상',
-                        description: '전략적 사고 과정을 팀과 공유하고, 정기적인 소통으로 의도를 명확히 전달하세요.'
-                    },
-                    {
-                        title: '협업적 의사결정',
-                        description: '데이터 분석과 함께 팀원들의 현장 경험과 직관도 의사결정에 반영하는 습관을 기르세요.'
-                    }
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
                 ],
-                compatibility: [
-                    { type: 'FNEI', nickname: '열정적인 모험가', emoji: '🐬', level: 'good', description: 'SARI의 계획력과 분석력이 FNEI의 창의적 에너지를 구체적인 성과로 이끌어냅니다.' },
-                    { type: 'FNEM', nickname: '친화력 높은 조력자', emoji: '🦜', level: 'good', description: 'FNEM의 소통력이 SARI의 전략을 팀에 효과적으로 전파하고 실행을 도와줍니다.' },
-                    { type: 'SNRM', nickname: '헌신적인 조력자', emoji: '🐘', level: 'okay', description: '둘 다 신중하고 계획적이어서 안정적인 협업이 가능하지만, 변화 대응력이 부족할 수 있습니다.' },
-                    { type: 'FAEI', nickname: '창의적인 전략가', emoji: '🦊', level: 'caution', description: 'SARI의 신중함과 FAEI의 즉흥성이 충돌하여 의사결정 속도에서 갈등이 생길 수 있습니다.' }
-                ]
+                compatibility: {
+                    best: [{ type: 'FNEI', nickname: '열정적인 모험가', emoji: '🐬', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'FNEM', nickname: '친화력 높은 조력자', emoji: '🦜', description: '좋은 파트너 설명 1' },
+                        { type: 'SNRM', nickname: '헌신적인 조력자', emoji: '🐘', description: '좋은 파트너 설명 2' }
+                    ]
+                }
             },
             SARM: {
-                nickname: '성실한 실무자',
-                emoji: '🐜',
+                nickname: '성실한 실무자', emoji: '🐜',
                 description: '부지런한 개미처럼, 원칙과 절차를 중시하며 묵묵히 자기 역할을 다하는 신뢰할 수 있는 실무자입니다.',
                 tags: ['성실한', '책임감', '신뢰성', '체계적'],
-                strengths: [
-                    '높은 신뢰성과 책임감 : 약속한 사항은 반드시 지키고 마감일을 철저히 준수합니다.',
-                    '메모리와 자료 관리 : 업무 관련 지식이나 데이터를 체계적으로 축적합니다.',
-                    '차분한 문제 해결 : 냉정하게 사실을 파악하고 논리적으로 근본 원인을 규명합니다.'
-                ],
-                cautions: [
-                    '변화에 대한 저항 : 검증된 절차를 선호해 새로운 변혁에 회의적일 수 있습니다.',
-                    '의사소통 부족 : 자기 방식에 몰두하다 보면 주변과의 소통이 부족해질 수 있습니다.',
-                    '혁신 부족 : 현재 효율에 집중하다 보니 혁신적인 아이디어나 모험을 시도하지 않습니다.'
-                ],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
                 recommendedRole: '회계·세무, 재무 보고, 규제·준법 감시, 품질 검사, 운영 매뉴얼 작성',
                 mentoring: [
-                    {
-                        title: '점진적 변화 도입',
-                        description: '기존 절차의 장점을 인정하면서도 작은 개선부터 시작해 변화에 대한 거부감을 줄여주세요.'
-                    },
-                    {
-                        title: '소통 채널 구축',
-                        description: '정기적인 보고 체계를 만들어 업무 진행 상황을 공유하고 피드백을 받을 수 있게 하세요.'
-                    },
-                    {
-                        title: '혁신 참여 기회',
-                        description: '안정성을 유지하면서도 작은 실험이나 개선 제안에 참여할 수 있는 기회를 제공하세요.'
-                    }
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
                 ],
-                compatibility: [
-                    { type: 'FAEM', nickname: '현장형 문제해결자', emoji: '🦦', level: 'good', description: 'SARM의 체계성이 FAEM의 즉흥적 해결을 보완하여 지속가능한 개선을 만들어냅니다.' },
-                    { type: 'SNEI', nickname: '카리스마 비전형 리더', emoji: '🐶', level: 'good', description: 'SNEI의 비전과 동기부여가 SARM의 성실함을 더 큰 목표를 향해 이끌어냅니다.' },
-                    { type: 'FARM', nickname: '침착한 해결사', emoji: '🐢', level: 'okay', description: '둘 다 안정적이고 체계적이어서 협업이 원활하지만, 혁신성 부족으로 정체될 수 있습니다.' },
-                    { type: 'FNRM', nickname: '온화한 조정자', emoji: '🐼', level: 'caution', description: 'SARM의 경직성과 FNRM의 유연성이 충돌하여 업무 진행 방식에서 갈등이 생길 수 있습니다.' }
-                ]
+                compatibility: {
+                    best: [{ type: 'FAEM', nickname: '현장형 문제해결자', emoji: '🦦', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'SNEI', nickname: '카리스마 비전형 리더', emoji: '🐶', description: '좋은 파트너 설명 1' },
+                        { type: 'FARM', nickname: '침착한 해결사', emoji: '🐢', description: '좋은 파트너 설명 2' }
+                    ]
+                }
             },
             SNEI: {
-                nickname: '카리스마 비전형 리더',
-                emoji: '🐶',
+                nickname: '카리스마 비전형 리더', emoji: '🐶',
                 description: '충성심 높은 개처럼, 사람과 비전 중심의 카리스마로 팀의 사기를 북돋우며 솔선수범하는 리더입니다.',
                 tags: ['카리스마', '비전형', '사람중심', '열정적'],
-                strengths: [
-                    '사람을 끌어당기는 리더십 : 공감과 열정으로 비전을 제시하고 자발적 참여를 이끕니다.',
-                    '체계적 추진 : 목표와 계획을 명확히 세우고 체계적으로 관리합니다.',
-                    '변화에 대한 긍정성 : 새로운 시도나 변화를 두려움보다 기대를 가지고 추진합니다.'
-                ],
-                cautions: [
-                    '과도한 부담 감수 : 사람들을 위해 헌신하는 경향이 강해 과로할 위험이 있습니다.',
-                    '감정적 의사결정 : 사람의 가치나 직관에 무게를 두다 보면 비현실적인 목표를 설정할 수 있습니다.',
-                    '갈등 회피 : 사람 사이의 긍정을 중시해 필요한 갈등을 직면하기보다 우회할 수 있습니다.'
-                ],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
                 recommendedRole: 'CSR·ESG 기획, 사회공헌 프로그램, 교육 콘텐츠 운영, 커뮤니티 사업',
                 mentoring: [
-                    {
-                        title: '건강한 경계 설정',
-                        description: '헌신적인 성향을 인정하면서도 적절한 업무량과 휴식을 유지하도록 도와주세요.'
-                    },
-                    {
-                        title: '객관적 판단 균형',
-                        description: '감정적 동기와 함께 데이터와 현실적 제약을 고려한 의사결정을 하도록 안내하세요.'
-                    },
-                    {
-                        title: '건설적 갈등 관리',
-                        description: '갈등을 회피하지 말고 팀의 성장을 위한 필요한 대화로 전환하는 방법을 가르쳐 주세요.'
-                    }
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
                 ],
-                compatibility: [
-                    { type: 'FARM', nickname: '침착한 해결사', emoji: '🐢', level: 'good', description: 'SNEI의 비전과 열정이 FARM의 안정성과 전문성을 이끌어 균형잡힌 팀워크를 만듭니다.' },
-                    { type: 'FNRI', nickname: '내향적 창조자', emoji: '🦝', level: 'good', description: 'SNEI의 비전 제시와 격려가 FNRI의 창의성을 더 큰 목표를 향해 이끌어냅니다.' },
-                    { type: 'SARM', nickname: '성실한 실무자', emoji: '🐜', level: 'okay', description: 'SNEI의 비전과 동기부여가 SARM의 성실함을 더 큰 목표를 향해 이끌어내지만, 현실성 검토가 필요합니다.' },
-                    { type: 'SAEI', nickname: '타고난 조직 리더', emoji: '🐻', level: 'caution', description: '둘 다 강한 리더십을 가지고 있어 의견 충돌이나 주도권 경쟁이 생길 수 있습니다.' }
-                ]
+                compatibility: {
+                    best: [{ type: 'FARM', nickname: '침착한 해결사', emoji: '🐢', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'FNRI', nickname: '내향적 창조자', emoji: '🦝', description: '좋은 파트너 설명 1' },
+                        { type: 'SARM', nickname: '성실한 실무자', emoji: '🐜', description: '좋은 파트너 설명 2' }
+                    ]
+                }
             },
             SNEM: {
-                nickname: '조화로운 중재자',
-                emoji: '🐾',
+                nickname: '조화로운 중재자', emoji: '🐾',
                 description: '협력하는 미어캣처럼, 사람들을 잘 챙기고 소통하며 조직의 안정과 조화를 우선시하는 중재자입니다.',
                 tags: ['중재적', '조화로운', '소통', '협력적'],
-                strengths: [
-                    '팀 분위기 조율 : 팀원들의 상태를 잘 파악하고 모두가 편안하게 일하도록 합니다.',
-                    '높은 책임감과 조직 충성도 : 맡은 일은 끝까지 관리하고 조직에 대한 충성심이 높습니다.',
-                    '의사소통과 협업 : 부서 내외 소통이 활발하고 타부서와 협력을 잘합니다.'
-                ],
-                cautions: [
-                    '변화에 대한 둔감함 : 현 상태에 만족하면 새로운 변화를 찾지 않습니다.',
-                    '의사결정의 우유부단 : 모두를 만족시키려다 보면 결정을 내리는 데 시간이 오래 걸립니다.',
-                    '성과 대비 관계 치중 : 관계 유지에 집중한 나머지 실제 성과 관리가 소홀해질 수 있습니다.'
-                ],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
                 recommendedRole: '직원 고충 상담, 복지·Well-being 프로그램, 사내 이벤트 기획, 내부 커뮤니케이션',
                 mentoring: [
-                    {
-                        title: '변화 인식 제고',
-                        description: '현재 상태의 장점을 인정하면서도 지속적인 개선의 필요성을 인식할 수 있도록 도와주세요.'
-                    },
-                    {
-                        title: '의사결정 프로세스',
-                        description: '모든 사람을 만족시키려 하지 말고, 명확한 기준에 따라 결정을 내리는 방법을 가르쳐 주세요.'
-                    },
-                    {
-                        title: '성과 지표 설정',
-                        description: '관계적 성과와 함께 객관적인 성과 지표를 설정하여 균형잡힌 평가를 받도록 하세요.'
-                    }
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
                 ],
-                compatibility: [
-                    { type: 'FAEI', nickname: '창의적인 전략가', emoji: '🦊', level: 'good', description: 'SNEM이 갈등을 중재하고 팀 분위기를 조율하여 FAEI가 안정적으로 아이디어를 실행할 수 있습니다.' },
-                    { type: 'SNRM', nickname: '헌신적인 조력자', emoji: '🐘', level: 'good', description: '둘 다 조화와 협력을 중시하여 안정적이고 배려깊은 팀 문화를 만들어냅니다.' },
-                    { type: 'SARI', nickname: '과묵한 전략가', emoji: '🐙', level: 'okay', description: 'SNEM의 소통력이 SARI의 전략적 사고를 팀에 효과적으로 전달하지만, 결정력 부족이 문제될 수 있습니다.' },
-                    { type: 'FNEI', nickname: '열정적인 모험가', emoji: '🐬', level: 'caution', description: 'SNEM의 안정성과 FNEI의 변화 추구가 충돌하여 혁신 속도에서 갈등이 생길 수 있습니다.' }
-                ]
+                compatibility: {
+                    best: [{ type: 'FAEI', nickname: '창의적인 전략가', emoji: '🦊', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'SNRM', nickname: '헌신적인 조력자', emoji: '🐘', description: '좋은 파트너 설명 1' },
+                        { type: 'SARI', nickname: '과묵한 전략가', emoji: '🐙', description: '좋은 파트너 설명 2' }
+                    ]
+                }
             },
             SNRI: {
-                nickname: '조용한 개척자',
-                emoji: '🦉',
+                nickname: '조용한 개척자', emoji: '🦉',
                 description: '지혜로운 올빼미처럼, 깊은 통찰력과 묵묵한 실행력으로 미래를 내다보며 새로운 길을 개척합니다.',
                 tags: ['통찰력', '개척적', '집중력', '비전'],
-                strengths: [
-                    '통찰력 있는 기획 : 복잡한 상황에서 핵심을 간파하고 미래를 내다보는 통찰력이 있습니다.',
-                    '높은 집중력 : 혼자 일하는데 익숙하고 한번 목표를 정하면 끝까지 파고듭니다.',
-                    '가치 지향적 리더십 : 중요하게 여기는 가치나 목표에 대해서는 강한 추진력을 보입니다.'
-                ],
-                cautions: [
-                    '의사소통의 제한 : 머릿속 그림을 충분히 설명하지 않고 행동할 때가 있습니다.',
-                    '과도한 이상주의 : 직관과 신념을 중시해서 현실적인 제약을 무시하는 경향이 있습니다.',
-                    '협업 부족 : 혼자 몰입해서 일하기를 좋아해 팀 협업에는 소홀할 수 있습니다.'
-                ],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
                 recommendedRole: '미래전략 연구, 정책 기획, 리서치 분석, 교육 콘텐츠 기획',
                 mentoring: [
-                    {
-                        title: '소통 능력 개발',
-                        description: '통찰력 있는 아이디어를 팀과 공유하고 설명하는 능력을 기르도록 도와주세요.'
-                    },
-                    {
-                        title: '현실성 검토',
-                        description: '이상적인 비전과 함께 현실적 제약과 실행 가능성을 함께 고려하도록 안내하세요.'
-                    },
-                    {
-                        title: '협업 가치 인식',
-                        description: '혼자만의 작업이 아니라 팀 협업을 통해 더 큰 성과를 낼 수 있음을 경험하게 하세요.'
-                    }
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
                 ],
-                compatibility: [
-                    { type: 'FAEM', nickname: '현장형 문제해결자', emoji: '🦦', level: 'good', description: 'SNRI의 통찰력과 FAEM의 실행력이 만나 현장 문제를 근본적으로 해결할 수 있습니다.' },
-                    { type: 'FNRM', nickname: '온화한 조정자', emoji: '🐼', level: 'good', description: '둘 다 조용하고 사려깊어서 서로를 이해하며, 상호 보완적인 통찰력을 발휘합니다.' },
-                    { type: 'SNRM', nickname: '헌신적인 조력자', emoji: '🐘', level: 'okay', description: '둘 다 신중하고 가치를 중시하여 의미있는 협업이 가능하지만, 실행력 부족이 문제될 수 있습니다.' },
-                    { type: 'FAEI', nickname: '창의적인 전략가', emoji: '🦊', level: 'caution', description: 'SNRI의 신중함과 FAEI의 즉흥성이 충돌하여 의사결정과 실행 속도에서 갈등이 생길 수 있습니다.' }
-                ]
+                compatibility: {
+                    best: [{ type: 'FAEM', nickname: '현장형 문제해결자', emoji: '🦦', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'FNRM', nickname: '온화한 조정자', emoji: '🐼', description: '좋은 파트너 설명 1' },
+                        { type: 'SNRM', nickname: '헌신적인 조력자', emoji: '🐘', description: '좋은 파트너 설명 2' }
+                    ]
+                }
             },
             SNRM: {
-                nickname: '헌신적인 조력자',
-                emoji: '🐘',
+                nickname: '헌신적인 조력자', emoji: '🐘',
                 description: '온순한 코끼리처럼, 뛰어난 기억력과 헌신으로 팀의 전통과 안정을 지키며 동료를 배려하는 조력자입니다.',
                 tags: ['헌신적', '안정적', '배려심', '전통적'],
-                strengths: [
-                    '성실하고 헌신적 : 맡겨진 일을 끝까지 책임지고 완수하며 묵묵히 희생도 마다하지 않습니다.',
-                    '높은 공감과 협조성 : 동료의 감정을 잘 알아채고 갈등이 보이면 솔선해 중재합니다.',
-                    '지식의 축적과 전승 : 기존 노하우를 꼼꼼히 축적하고 후배에게 친절하게 가르칩니다.'
-                ],
-                cautions: [
-                    '변화에 대한 소극성 : 현재 방식에 익숙해 혁신이 필요할 때 변화를 추진하지 않습니다.',
-                    '자기표현 부족 : 불만이나 과중한 업무 부담을 겉으로 잘 표현하지 않습니다.',
-                    '우유부단함 : 사람을 중시하고 충돌을 피하려 해서 의사결정이 지연될 수 있습니다.'
-                ],
+                strengths: ['강점 1', '강점 2', '강점 3'],
+                cautions: ['주의사항 1', '주의사항 2', '주의사항 3'],
                 recommendedRole: 'HR 제도 운영, 총무·행정, 온보딩 교육, 지식·문서 관리, 복지 서비스',
                 mentoring: [
-                    {
-                        title: '자기표현 격려',
-                        description: '헌신적인 태도를 인정하면서도 자신의 의견이나 어려움을 표현하도록 격려하세요.'
-                    },
-                    {
-                        title: '점진적 변화 참여',
-                        description: '기존 방식의 장점을 유지하면서도 작은 개선에 참여할 수 있는 기회를 제공하세요.'
-                    },
-                    {
-                        title: '의사결정 지원',
-                        description: '갈등 상황에서도 명확한 기준에 따라 결정을 내릴 수 있도록 프레임워크를 제공하세요.'
-                    }
+                    { title: '멘토링 포인트 1', description: '설명 1' },
+                    { title: '멘토링 포인트 2', description: '설명 2' },
+                    { title: '멘토링 포인트 3', description: '설명 3' }
                 ],
-                compatibility: [
-                    { type: 'FNEI', nickname: '열정적인 모험가', emoji: '🐬', level: 'good', description: 'SNRM의 안정성과 배려가 FNEI의 변동성을 보완하여 지속가능한 협업을 만듭니다.' },
-                    { type: 'SNEM', nickname: '조화로운 중재자', emoji: '🐾', level: 'good', description: '둘 다 조화와 협력을 중시하여 안정적이고 배려깊은 팀 문화를 만들어냅니다.' },
-                    { type: 'SARI', nickname: '과묵한 전략가', emoji: '🐙', level: 'okay', description: '둘 다 신중하고 계획적이어서 안정적인 협업이 가능하지만, 변화 대응력이 부족할 수 있습니다.' },
-                    { type: 'SNRI', nickname: '조용한 개척자', emoji: '🦉', level: 'caution', description: 'SNRM의 안정성과 SNRI의 개척정신이 충돌하여 변화의 속도와 방향에서 갈등이 생길 수 있습니다.' }
-                ]
+                compatibility: {
+                    best: [{ type: 'FNEI', nickname: '열정적인 모험가', emoji: '🐬', description: '최고의 파트너 설명' }],
+                    good: [
+                        { type: 'SNEM', nickname: '조화로운 중재자', emoji: '🐾', description: '좋은 파트너 설명 1' },
+                        { type: 'SARI', nickname: '과묵한 전략가', emoji: '🐙', description: '좋은 파트너 설명 2' }
+                    ]
+                }
             }
         };
 
@@ -812,14 +791,14 @@
                     <div class="section">
                         <h3>💪 강점</h3>
                         <ul>
-                            ${data.strengths.map(strength => `<li><strong>${strength.split(' : ')[0]}</strong> ${strength.split(' : ')[1] || ''}</li>`).join('')}
+                            ${data.strengths.map(strength => `<li><strong>${strength}</strong></li>`).join('')}
                         </ul>
                     </div>
                     
                     <div class="section">
                         <h3>⚠️ 주의사항</h3>
                         <ul>
-                            ${data.cautions.map(caution => `<li><strong>${caution.split(' : ')[0]}</strong> ${caution.split(' : ')[1] || ''}</li>`).join('')}
+                            ${data.cautions.map(caution => `<li><strong>${caution}</strong></li>`).join('')}
                         </ul>
                     </div>
                     
@@ -842,17 +821,37 @@
 
                     <div class="section">
                         <h3>🤝 업무 궁합 분석</h3>
-                        <div class="compatibility-grid">
-                            ${data.compatibility.map(comp => `
-                                <div class="compatibility-item ${comp.level}">
-                                    <div class="compatibility-header">
-                                        <span class="compatibility-emoji">${comp.emoji}</span>
-                                        <span class="compatibility-type">${comp.type}</span>
-                                        <span class="compatibility-name">${comp.nickname}</span>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: #16a34a; font-size: 1rem; margin-bottom: 0.75rem; font-weight: 600;">⭐ 최고의 파트너</h4>
+                            <div class="compatibility-grid">
+                                ${data.compatibility.best.map(comp => `
+                                    <div class="compatibility-item best">
+                                        <div class="compatibility-header">
+                                            <span class="compatibility-emoji">${comp.emoji}</span>
+                                            <span class="compatibility-type">${comp.type}</span>
+                                            <span class="compatibility-name">${comp.nickname}</span>
+                                        </div>
+                                        <p class="compatibility-description">${comp.description}</p>
                                     </div>
-                                    <p class="compatibility-description">${comp.description}</p>
-                                </div>
-                            `).join('')}
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 style="color: #d97706; font-size: 1rem; margin-bottom: 0.75rem; font-weight: 600;">👍 좋은 파트너</h4>
+                            <div class="compatibility-grid">
+                                ${data.compatibility.good.map(comp => `
+                                    <div class="compatibility-item good">
+                                        <div class="compatibility-header">
+                                            <span class="compatibility-emoji">${comp.emoji}</span>
+                                            <span class="compatibility-type">${comp.type}</span>
+                                            <span class="compatibility-name">${comp.nickname}</span>
+                                        </div>
+                                        <p class="compatibility-description">${comp.description}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -889,390 +888,14 @@
 
         // 이벤트 리스너
         searchInput.addEventListener('input', handleSearch);
-        
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-        // 전역 함수로 설정 (HTML에서 호출용)
+        // 전역 함수
         window.closeModal = closeModal;
 
         // 초기화
         renderCards();
     </script>
 </body>
-</html>신사업 기획, 브랜드 전략, 벤처 투자 심사, 콘텐츠 기획·제작',
-                mentoring: [
-                    {
-                        title: '창의성과 체계성의 균형',
-                        description: '정기적인 체계성을 부여하면 지속성이 향상됩니다. 아이디어 체크포인트를 다음 각각에 두세요.'
-                    },
-                    {
-                        title: '강점 살리기',
-                        description: '열정이 넘칠 때 시스템을 구축하고, 더 큰 그림을 그린 뒤 단계별로 접근하세요.'
-                    },
-                    {
-                        title: '갈등 완화',
-                        description: '토론할 때는 의견이 아닌 방법론 중심으로 접근하며, 상대방이 납득할 수 있게 설명하세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'SAEM', nickname: '체계적 관리자', emoji: '🐝', level: 'good', description: 'SAEM의 체계성이 FAEI의 창의성을 보완하여 아이디어가 실제 성과로 이어집니다.' },
-                    { type: 'SNEM', nickname: '조화로운 중재자', emoji: '🐾', level: 'good', description: 'SNEM이 갈등을 중재하고 팀 분위기를 조율하여 FAEI가 안정적으로 아이디어를 실행할 수 있습니다.' },
-                    { type: 'FAEM', nickname: '현장형 문제해결자', emoji: '🦦', level: 'okay', description: '둘 다 빠른 실행력을 가지고 있어 시너지가 있지만, 체계성 부족으로 혼란이 올 수 있습니다.' },
-                    { type: 'FARI', nickname: '자유로운 혁신가', emoji: '🐱', level: 'caution', description: '둘 다 독립적이고 자유로운 성향으로 협업보다는 개별 작업에 집중할 수 있습니다.' }
-                ]
-            },
-            FAEM: {
-                nickname: '현장형 문제해결자',
-                emoji: '🦦',
-                description: '영리한 수달처럼, 어려운 상황에서도 금방 해결책을 찾아내고 사람들과 폭넓게 교류하며 문제를 해결합니다.',
-                tags: ['실무적', '대인관계', '문제해결', '적응력'],
-                strengths: [
-                    '즉각적인 문제 대응 능력 : 예상치 못한 문제에 대한 대처가 빠르고 합리적입니다.',
-                    '폭넓은 대인 관계 : 사람들과 금방 친해지고 의사소통이 원활합니다.',
-                    '현실적 개선 추구 : 당장 효과를 볼 수 있는 개선책을 선호합니다.'
-                ],
-                cautions: [
-                    '장기 비전 부족 : 큰 그림이나 장기 전략을 소홀히 할 수 있습니다.',
-                    '체계 부족 : 즉흥적으로 해결한 문제에 대한 기록이나 표준화가 안 될 수 있습니다.',
-                    '우선순위 충돌 : 외부 요구에 유연하게 대응하다 보면 주 업무가 지연될 수 있습니다.'
-                ],
-                recommendedRole: 'CX 개선, 운영 혁신, 매장·현장 운영, 고객 경험 설계',
-                mentoring: [
-                    {
-                        title: '장기 전략 수립',
-                        description: '즉각적 문제해결과 함께 분기별 목표를 세워 큰 그림을 그리는 습관을 기르세요.'
-                    },
-                    {
-                        title: '체계화 및 문서화',
-                        description: '해결한 문제들을 간단히 기록하고 패턴을 찾아 표준 프로세스로 만들어보세요.'
-                    },
-                    {
-                        title: '우선순위 관리',
-                        description: '하루 시작 시 3가지 핵심 업무를 정하고, 외부 요청은 이 우선순위와 비교해 판단하세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'SNRI', nickname: '조용한 개척자', emoji: '🦉', level: 'good', description: 'SNRI의 통찰력과 FAEM의 실행력이 만나 현장 문제를 근본적으로 해결할 수 있습니다.' },
-                    { type: 'SARM', nickname: '성실한 실무자', emoji: '🐜', level: 'good', description: 'SARM의 체계성이 FAEM의 즉흥적 해결을 보완하여 지속가능한 개선을 만들어냅니다.' },
-                    { type: 'FNEI', nickname: '열정적인 모험가', emoji: '🐬', level: 'okay', description: '둘 다 사교적이고 적응력이 좋아 협업이 원활하지만, 체계성 부족으로 혼란이 올 수 있습니다.' },
-                    { type: 'FAEI', nickname: '창의적인 전략가', emoji: '🦊', level: 'caution', description: '둘 다 빠른 실행을 선호하지만 장기적 계획 없이 진행하면 방향성을 잃을 수 있습니다.' }
-                ]
-            },
-            FARI: {
-                nickname: '자유로운 혁신가',
-                emoji: '🐱',
-                description: '독립심 강한 고양이처럼, 규칙에 얽매이지 않고 자유롭게 사고하며 혼자서도 혁신적인 아이디어를 실행합니다.',
-                tags: ['독립적', '혁신적', '전문적', '자유로운'],
-                strengths: [
-                    '유연한 문제 해결 : 상황에 맞게 방법을 재창조하는 능력이 뛰어납니다.',
-                    '높은 집중력과 전문성 : 관심 있는 주제에 몰입해서 깊이 파고듭니다.',
-                    '주도적 혁신 : 스스로 필요를 느끼면 새로운 프로젝트를 시작합니다.'
-                ],
-                cautions: [
-                    '체계 부족 : 계획 수립이나 체계적인 실행에 약점이 있을 수 있습니다.',
-                    '소통 미흡 : 자기 논리에 확신이 있어도 남에게 적극 공유하지 않습니다.',
-                    '우선순위 혼선 : 새로운 일이 생기면 기존 일을 제쳐둘 수 있습니다.'
-                ],
-                recommendedRole: '프로토타입 개발, 오픈소스 리드, UX 프로토타이핑, 앱·게임 제작',
-                mentoring: [
-                    {
-                        title: '자율성과 소통의 균형',
-                        description: '독립적 작업을 존중하면서도 주기적인 체크인으로 방향성을 점검하세요.'
-                    },
-                    {
-                        title: '성과 공유 격려',
-                        description: '완성도가 낮아도 중간 결과물을 팀과 공유하도록 격려하여 피드백을 받을 기회를 만드세요.'
-                    },
-                    {
-                        title: '우선순위 가이드',
-                        description: '새로운 아이디어가 떠올랐을 때 기존 프로젝트와의 연관성을 먼저 검토하도록 안내하세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'SAEI', nickname: '타고난 조직 리더', emoji: '🐻', level: 'good', description: 'SAEI의 명확한 방향성이 FARI의 혁신적 아이디어에 구조와 목표를 제공합니다.' },
-                    { type: 'FARM', nickname: '침착한 해결사', emoji: '🐢', level: 'good', description: '둘 다 독립적이면서 FARM의 침착함이 FARI의 창의성을 안정적으로 뒷받침합니다.' },
-                    { type: 'FNRI', nickname: '내향적 창조자', emoji: '🦝', level: 'okay', description: '둘 다 창의적이고 독립적이어서 서로 이해하지만, 협업보다는 개별 작업을 선호할 수 있습니다.' },
-                    { type: 'FNEM', nickname: '친화력 높은 조력자', emoji: '🦜', level: 'caution', description: 'FARI의 독립성과 FNEM의 사교성이 충돌하여 작업 스타일 차이로 갈등이 생길 수 있습니다.' }
-                ]
-            },
-            FARM: {
-                nickname: '침착한 해결사',
-                emoji: '🐢',
-                description: '차분한 거북이처럼, 자기 페이스대로 꾸준히 나아가며 묵묵히 자신의 역할을 완수하는 안정적인 해결사입니다.',
-                tags: ['침착한', '논리적', '전문적', '안정적'],
-                strengths: [
-                    '침착한 대응력 : 예상치 못한 문제가 생겨도 당황하지 않고 차분하게 분석합니다.',
-                    '높은 집중과 전문성 : 혼자 일하는 걸 선호하여 업무 영역의 전문성을 깊게 개발합니다.',
-                    '낮은 갈등 성향 : 팀 내 정치나 갈등에 휘말리지 않고 조용히 자기 일을 합니다.'
-                ],
-                cautions: [
-                    '주도성 부족 : 변화나 새로운 기회 창출 측면에서는 기여도가 낮을 수 있습니다.',
-                    '커뮤니케이션 미흡 : 자신이 한 개선 내용을 공유하지 않는 경우가 있습니다.',
-                    '우선순위 혼동 : 상사의 지시가 바뀌면 자기 업무의 큰 계획을 놓칠 수 있습니다.'
-                ],
-                recommendedRole: 'SRE·인프라 운영, 정보보안 분석, IT 헬프데스크, 네트워크 모니터링',
-                mentoring: [
-                    {
-                        title: '주도성 개발',
-                        description: '전문성을 바탕으로 개선 제안을 하도록 격려하고, 작은 변화부터 시작해 성공 경험을 쌓으세요.'
-                    },
-                    {
-                        title: '성과 가시화',
-                        description: '조용히 해낸 업무들을 정기적으로 공유하도록 도와 팀 내 기여도를 인정받을 수 있게 하세요.'
-                    },
-                    {
-                        title: '우선순위 명확화',
-                        description: '업무 지시 시 전체 맥락과 우선순위를 명확히 설명하여 혼란을 방지하세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'SNEI', nickname: '카리스마 비전형 리더', emoji: '🐶', level: 'good', description: 'SNEI의 비전과 열정이 FARM의 안정성과 전문성을 이끌어 균형잡힌 팀워크를 만듭니다.' },
-                    { type: 'FARI', nickname: '자유로운 혁신가', emoji: '🐱', level: 'good', description: '둘 다 독립적이면서 FARM의 침착함이 FARI의 창의성을 안정적으로 뒷받침합니다.' },
-                    { type: 'SARM', nickname: '성실한 실무자', emoji: '🐜', level: 'okay', description: '둘 다 안정적이고 체계적이어서 협업이 원활하지만, 혁신성 부족으로 정체될 수 있습니다.' },
-                    { type: 'FNEI', nickname: '열정적인 모험가', emoji: '🐬', level: 'caution', description: 'FARM의 신중함과 FNEI의 즉흥성이 충돌하여 업무 진행 속도에서 갈등이 생길 수 있습니다.' }
-                ]
-            },
-            FNEI: {
-                nickname: '열정적인 모험가',
-                emoji: '🐬',
-                description: '사회적인 돌고래처럼, 창의적이고 열정적인 성격으로 사람들과 어울리며 새로운 시도를 마다하지 않습니다.',
-                tags: ['열정적', '사교적', '창의적', '모험적'],
-                strengths: [
-                    '강한 창의성과 호기심 : 상상력이 풍부하고 새로운 아이디어를 실험해봅니다.',
-                    '탁월한 인간관계 : 사람들과 쉽게 친해지고 협력을 이끌어내는 능력이 있습니다.',
-                    '즉흥적 실행력 : 계획이 미흡해도 일단 시작하고 보는 적극성이 있습니다.'
-                ],
-                cautions: [
-                    '계획 및 지속성 부족 : 많은 일을 벌여놓고 체계적 관리가 약할 수 있습니다.',
-                    '산만함 : 한 가지에 오래 집중하지 못하고 산만해질 수 있습니다.',
-                    '감정 기복 : 기분에 따라 생산성이 영향을 받기 쉽습니다.'
-                ],
-                recommendedRole: '디지털 마케팅, 그로스 해킹, SNS 콘텐츠 기획, 이벤트 기획',
-                mentoring: [
-                    {
-                        title: '체계적 실행 지원',
-                        description: '창의적 아이디어를 단계별로 나누어 실행 가능한 계획으로 만들도록 도와주세요.'
-                    },
-                    {
-                        title: '집중력 향상',
-                        description: '짧은 시간 집중 + 휴식의 패턴을 만들고, 하나의 프로젝트를 완성하는 성취감을 경험하게 하세요.'
-                    },
-                    {
-                        title: '감정 관리',
-                        description: '기분 변화가 업무에 미치는 영향을 인식하게 하고, 안정적인 루틴을 만들어 주세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'SARI', nickname: '과묵한 전략가', emoji: '🐙', level: 'good', description: 'SARI의 계획력과 분석력이 FNEI의 창의적 에너지를 구체적인 성과로 이끌어냅니다.' },
-                    { type: 'SNRM', nickname: '헌신적인 조력자', emoji: '🐘', level: 'good', description: 'SNRM의 안정성과 배려가 FNEI의 변동성을 보완하여 지속가능한 협업을 만듭니다.' },
-                    { type: 'FAEM', nickname: '현장형 문제해결자', emoji: '🦦', level: 'okay', description: '둘 다 사교적이고 적응력이 좋아 협업이 원활하지만, 체계성 부족으로 혼란이 올 수 있습니다.' },
-                    { type: 'FARM', nickname: '침착한 해결사', emoji: '🐢', level: 'caution', description: 'FNEI의 즉흥성과 FARM의 신중함이 충돌하여 업무 진행 속도에서 갈등이 생길 수 있습니다.' }
-                ]
-            },
-            FNEM: {
-                nickname: '친화력 높은 조력자',
-                emoji: '🦜',
-                description: '다채로운 앵무새처럼, 주변 분위기를 띄우고 모두와 두루 잘 지내며 팀의 분위기메이커 역할을 합니다.',
-                tags: ['친화적', '적응력', '서비스', '분위기메이커'],
-                strengths: [
-                    '팀 사기 진작 : 타인의 감정에 민감하고 팀워크 향상에 기여합니다.',
-                    '유연하고 빠른 적응 : 새로운 환경에도 금방 적응하고 스며듭니다.',
-                    '서비스 정신과 개선 노력 : 사람을 좋아하기에 서비스 마인드가 강합니다.'
-                ],
-                cautions: [
-                    '체계적 진행의 부족 : 세부 계획 수립이나 체계적인 절차 준수가 허술할 수 있습니다.',
-                    '집중력 저하 : 혼자 조용히 장시간 집중해야 하는 업무를 어려워할 수 있습니다.',
-                    '의견 대립 시 회피 : 갈등 상황에서 자기 주장을 강하게 내세우기보다 회피합니다.'
-                ],
-                recommendedRole: '사내 문화 프로그램, 온보딩 운영, 커뮤니티 매니지먼트, 내부 커뮤니케이션',
-                mentoring: [
-                    {
-                        title: '체계성 보완',
-                        description: '사람 중심 업무에 체크리스트나 간단한 프로세스를 도입하여 빠뜨리는 일이 없도록 하세요.'
-                    },
-                    {
-                        title: '집중 환경 조성',
-                        description: '조용한 시간대나 장소를 활용해 집중이 필요한 업무를 처리할 수 있도록 배려하세요.'
-                    },
-                    {
-                        title: '건설적 갈등 관리',
-                        description: '갈등을 피하지 말고 중재자 역할로 전환하여 문제를 해결하는 방법을 가르쳐 주세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'SAEI', nickname: '타고난 조직 리더', emoji: '🐻', level: 'good', description: 'SAEI의 강한 리더십을 FNEM이 팀 분위기로 부드럽게 전달하여 조직의 추진력을 높입니다.' },
-                    { type: 'SARI', nickname: '과묵한 전략가', emoji: '🐙', level: 'good', description: 'FNEM의 소통력이 SARI의 전략을 팀에 효과적으로 전파하고 실행을 도와줍니다.' },
-                    { type: 'FNRM', nickname: '온화한 조정자', emoji: '🐼', level: 'okay', description: '둘 다 조화를 중시하고 친화적이어서 협업이 원활하지만, 때로는 결단력이 부족할 수 있습니다.' },
-                    { type: 'FARI', nickname: '자유로운 혁신가', emoji: '🐱', level: 'caution', description: 'FNEM의 사교성과 FARI의 독립성이 충돌하여 작업 스타일 차이로 갈등이 생길 수 있습니다.' }
-                ]
-            },
-            FNRI: {
-                nickname: '내향적 창조자',
-                emoji: '🦝',
-                description: '호기심 많은 라쿤처럼, 혼자서 창의적으로 문제를 해결하고 자유로운 영감으로 혁신적인 작품을 만듭니다.',
-                tags: ['창조적', '독립적', '내향적', '혁신적'],
-                strengths: [
-                    '창의적 비전 : 아주 독창적인 아이디어를 생각해내고 틀을 깨는 발상을 합니다.',
-                    '깊은 집중과 전문성 : 좋아하는 분야에 몰입하면 시간가는 줄 모르고 탐구합니다.',
-                    '유연한 실행 : 창의적 아이디어를 실제로 시도해보는 실행력이 있습니다.'
-                ],
-                cautions: [
-                    '협업의 어려움 : 타인과 발을 맞추며 일하는 것을 답답해할 수 있습니다.',
-                    '체계 부족 : 장기적 계획보다는 즉흥적 몰입에 치우칩니다.',
-                    '피드백 부족 : 주변의 피드백이나 도움을 제때 못 받는 약점이 있습니다.'
-                ],
-                recommendedRole: '인디 게임·앱 개발, 모션·그래픽 디자인, 개인 콘텐츠 창작, 실험적 R&D',
-                mentoring: [
-                    {
-                        title: '자율성 존중',
-                        description: '창작 과정에 간섭하지 말고 결과물 중심으로 피드백하며, 충분한 독립 작업 시간을 보장하세요.'
-                    },
-                    {
-                        title: '점진적 협업',
-                        description: '일대일 협업부터 시작해서 점차 팀 단위 협업으로 확장하며, 협업의 가치를 경험하게 하세요.'
-                    },
-                    {
-                        title: '피드백 채널',
-                        description: '정기적이지만 부담스럽지 않은 피드백 루트를 만들어 고립되지 않도록 도와주세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'SNEI', nickname: '카리스마 비전형 리더', emoji: '🐶', level: 'good', description: 'SNEI의 비전 제시와 격려가 FNRI의 창의성을 더 큰 목표를 향해 이끌어냅니다.' },
-                    { type: 'SAEM', nickname: '체계적 관리자', emoji: '🐝', level: 'good', description: 'SAEM의 체계적 관리가 FNRI의 창의적 작업을 효율적으로 지원하고 결과물을 완성시킵니다.' },
-                    { type: 'FARI', nickname: '자유로운 혁신가', emoji: '🐱', level: 'okay', description: '둘 다 창의적이고 독립적이어서 서로 이해하지만, 협업보다는 개별 작업을 선호할 수 있습니다.' },
-                    { type: 'FNEM', nickname: '친화력 높은 조력자', emoji: '🦜', level: 'caution', description: 'FNRI의 내향성과 FNEM의 사교성이 충돌하여 소통 방식에서 어려움을 겪을 수 있습니다.' }
-                ]
-            },
-            FNRM: {
-                nickname: '온화한 조정자',
-                emoji: '🐼',
-                description: '온순한 판다처럼, 마음이 유연하고 공감력이 있으며 자기만의 방식으로 조용히 팀의 조화를 만듭니다.',
-                tags: ['온화한', '공감적', '적응적', '조화로운'],
-                strengths: [
-                    '뛰어난 적응력 : 상황 변화에 거부감이 적고 자연스럽게 스며들어 협업합니다.',
-                    '높은 공감과 협조 : 동료들의 감정을 세심하게 살피고 갈등 상황에서 중립을 지킵니다.',
-                    '자기만의 효율 추구 : 맡은 일에 대해 더 편리한 방법을 조용히 찾아냅니다.'
-                ],
-                cautions: [
-                    '주도성 부족 : 새로운 프로젝트나 추가 책임을 맡기를 꺼려할 수 있습니다.',
-                    '의사소통의 간접성 : 문제가 있어도 직접 말하지 않고 돌려서 말하거나 참습니다.',
-                    '우유부단함 : 중요한 결정에서 흑백을 가르지 못하고 망설입니다.'
-                ],
-                recommendedRole: 'HR 운영, 조직문화·ER, People Ops, 감성 UX 리서치',
-                mentoring: [
-                    {
-                        title: '주도성 격려',
-                        description: '작은 결정부터 스스로 내리도록 격려하고, 성공 경험을 통해 자신감을 키워주세요.'
-                    },
-                    {
-                        title: '직접 소통 훈련',
-                        description: '안전한 환경에서 직접적인 의사표현을 연습하고, 솔직한 피드백의 가치를 경험하게 하세요.'
-                    },
-                    {
-                        title: '의사결정 프레임워크',
-                        description: '결정을 내릴 때 사용할 수 있는 간단한 기준이나 프로세스를 제공하여 우유부단함을 줄여주세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'SAEI', nickname: '타고난 조직 리더', emoji: '🐻', level: 'good', description: 'SAEI의 명확한 방향성이 FNRM에게 안정감을 주고, FNRM의 조화력이 팀 분위기를 부드럽게 만듭니다.' },
-                    { type: 'SNRI', nickname: '조용한 개척자', emoji: '🦉', level: 'good', description: '둘 다 조용하고 사려깊어서 서로를 이해하며, 상호 보완적인 통찰력을 발휘합니다.' },
-                    { type: 'FNEM', nickname: '친화력 높은 조력자', emoji: '🦜', level: 'okay', description: '둘 다 조화를 중시하고 친화적이어서 협업이 원활하지만, 때로는 결단력이 부족할 수 있습니다.' },
-                    { type: 'SARM', nickname: '성실한 실무자', emoji: '🐜', level: 'caution', description: 'FNRM의 유연성과 SARM의 경직성이 충돌하여 업무 진행 방식에서 갈등이 생길 수 있습니다.' }
-                ]
-            },
-            SAEI: {
-                nickname: '타고난 조직 리더',
-                emoji: '🐻',
-                description: '강인한 곰처럼, 명확한 목표와 계획으로 팀을 이끌며 논리적 설득력과 추진력을 동시에 발휘합니다.',
-                tags: ['리더십', '논리적', '결과지향', '추진력'],
-                strengths: [
-                    '명확한 리더십 : 방향성과 목표를 분명히 설정하고 팀원들에게 명확히 전달합니다.',
-                    '논리적 설득력 : 데이터와 근거로 설득하는 능력이 탁월합니다.',
-                    '결과지향적 실행 : 계획 수립에 그치지 않고 즉시 실행으로 옮깁니다.'
-                ],
-                cautions: [
-                    '지나친 지배력 : 타인의 의견을 듣지 않고 밀어붙이는 독단으로 보일 수 있습니다.',
-                    '유연성 부족 : 상황 변화에 따른 계획 수정이나 새로운 아이디어 수용에 경직될 수 있습니다.',
-                    '공감 부족 가능성 : 팀원의 감정이나 사기를 세심히 살피지 못할 수 있습니다.'
-                ],
-                recommendedRole: '사업 개발, 전략·투자 분석, 프로젝트 매니지먼트, B2B 영업',
-                mentoring: [
-                    {
-                        title: '경청과 포용',
-                        description: '결정하기 전에 팀원들의 의견을 충분히 들어보고, 다양한 관점을 수용하는 연습을 하세요.'
-                    },
-                    {
-                        title: '유연한 리더십',
-                        description: '상황에 따라 리더십 스타일을 조정하고, 때로는 팀원들에게 주도권을 넘겨주는 것도 고려하세요.'
-                    },
-                    {
-                        title: '감정적 지능 개발',
-                        description: '논리적 판단과 함께 팀원들의 감정 상태를 파악하고 배려하는 능력을 기르세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'FNEM', nickname: '친화력 높은 조력자', emoji: '🦜', level: 'good', description: 'SAEI의 강한 리더십을 FNEM이 팀 분위기로 부드럽게 전달하여 조직의 추진력을 높입니다.' },
-                    { type: 'FNRM', nickname: '온화한 조정자', emoji: '🐼', level: 'good', description: 'SAEI의 명확한 방향성이 FNRM에게 안정감을 주고, FNRM의 조화력이 팀 분위기를 부드럽게 만듭니다.' },
-                    { type: 'FARI', nickname: '자유로운 혁신가', emoji: '🐱', level: 'okay', description: 'SAEI의 명확한 방향성이 FARI의 혁신적 아이디어에 구조와 목표를 제공하지만, 자율성 충돌 가능성이 있습니다.' },
-                    { type: 'SNEI', nickname: '카리스마 비전형 리더', emoji: '🐶', level: 'caution', description: '둘 다 강한 리더십을 가지고 있어 의견 충돌이나 주도권 경쟁이 생길 수 있습니다.' }
-                ]
-            },
-            SAEM: {
-                nickname: '체계적 관리자',
-                emoji: '🐝',
-                description: '조직적인 꿀벌처럼, 원칙과 절차를 중시하며 팀의 업무를 체계적으로 관리하고 효율을 극대화합니다.',
-                tags: ['체계적', '관리적', '소통', '개선'],
-                strengths: [
-                    '조직 및 체계 관리 : 팀의 업무를 구조화하고 체계적으로 관리하는 데 능합니다.',
-                    '명확한 의사소통 : 기대치와 지시사항을 분명하게 전달합니다.',
-                    '꾸준한 프로세스 개선 : 현재 프로세스의 비효율을 발견하면 세심하게 개선합니다.'
-                ],
-                cautions: [
-                    '변화 대응 부족 : 기존 방식에 익숙해 새로운 변화가 필요할 때 보수적으로 대응할 수 있습니다.',
-                    '과도한 통제 : 부하 직원이나 동료의 업무 스타일에 지나치게 간섭할 수 있습니다.',
-                    '관성적인 리더십 : 도전정신이 약해 조직이 정체되거나 경쟁에서 뒤처질 우려가 있습니다.'
-                ],
-                recommendedRole: '품질보증(QA/QC), 내부 감사·컴플라이언스, 프로세스 분석, 문서화·표준화',
-                mentoring: [
-                    {
-                        title: '변화 수용 능력',
-                        description: '기존 체계의 장점을 유지하면서도 새로운 변화를 점진적으로 받아들이는 방법을 찾아보세요.'
-                    },
-                    {
-                        title: '위임과 신뢰',
-                        description: '팀원들의 업무 스타일을 존중하고, 결과 중심의 관리로 전환하여 자율성을 높여주세요.'
-                    },
-                    {
-                        title: '혁신적 사고',
-                        description: '현재 프로세스를 개선할 뿐만 아니라 완전히 새로운 접근법도 고려해보는 습관을 기르세요.'
-                    }
-                ],
-                compatibility: [
-                    { type: 'FAEI', nickname: '창의적인 전략가', emoji: '🦊', level: 'good', description: 'SAEM의 체계성이 FAEI의 창의성을 보완하여 아이디어가 실제 성과로 이어집니다.' },
-                    { type: 'FNRI', nickname: '내향적 창조자', emoji: '🦝', level: 'good', description: 'SAEM의 체계적 관리가 FNRI의 창의적 작업을 효율적으로 지원하고 결과물을 완성시킵니다.' },
-                    { type: 'SARM', nickname: '성실한 실무자', emoji: '🐜', level: 'okay', description: '둘 다 체계적이고 절차를 중시하여 협업이 원활하지만, 혁신 부족으로 정체될 수 있습니다.' },
-                    { type: 'FNEI', nickname: '열정적인 모험가', emoji: '🐬', level: 'caution', description: 'SAEM의 체계성과 FNEI의 즉흥성이 충돌하여 업무 진행 방식에서 갈등이 생길 수 있습니다.' }
-                ]
-            },
-            SARI: {
-                nickname: '과묵한 전략가',
-                emoji: '🐙',
-                description: '지략적인 문어처럼, 조용히 상황을 살피며 데이터에 기반한 분석적 판단으로 치밀한 전략을 수립합니다.',
-                tags: ['전략적', '분석적', '신중한', '계획적'],
-                strengths: [
-                    '철저한 계획력 : 목표 달성을 위한 로드맵을 꼼꼼히 수립합니다.',
-                    '데이터 기반 분석 : 객관적 자료와 논리로 의사결정을 내려 신뢰도가 높습니다.',
-                    '자기주도성과 책임감 : 스스로 필요한 일을 찾아서 추진합니다.'
-                ],
-                cautions: [
-                    '융통성 부족 : 예측 못한 변화에 적응이 느리고 자신의 방식을 고집할 수 있습니다.',
-                    '소통의 한계 : 속내를 잘 드러내지 않아 팀원들에게 의도가 전달되지 않을 수 있습니다.',
-                    '과도한 자기 확신 : 타인의 의견이나 감정을 간과할 수 있습니다.'
-                ],
-                recommendedRole: '
+</html>
