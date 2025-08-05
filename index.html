@@ -952,18 +952,6 @@
                     </div>
 
                     <div class="section">
-                        <h3>📝 팀장 멘토링 포인트</h3>
-                        <div class="mentoring-grid">
-                            ${data.mentoring.map(point => `
-                                <div class="mentoring-card">
-                                    <h4>${point.title}</h4>
-                                    <p>${point.description}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <div class="section">
                         <h3>🤝 업무 궁합 분석</h3>
                         
                         <div style="margin-bottom: 1.5rem;">
@@ -996,6 +984,18 @@
                                     </div>
                                 `).join('')}
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3>📝 팀장 멘토링 포인트</h3>
+                        <div class="mentoring-grid">
+                            ${data.mentoring.map(point => `
+                                <div class="mentoring-card">
+                                    <h4>${point.title}</h4>
+                                    <p>${point.description}</p>
+                                </div>
+                            `).join('')}
                         </div>
                     </div>
                 </div>
