@@ -272,6 +272,7 @@
             margin-bottom: 1rem;
             color: #475569;
             line-height: 1.6;
+            font-size: 0.875rem;
         }
         
         .section ul {
@@ -288,6 +289,27 @@
             border-left: 4px solid #6366f1;
             transition: all 0.3s ease;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            font-size: 0.875rem;
+        }
+
+        .section li.strength {
+            background: #f0fdf4;
+            border-left-color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+
+        .section li.caution {
+            background: #fff7ed;
+            border-left-color: #ea580c;
+            border: 1px solid #fed7aa;
+        }
+
+        .section li.strength strong {
+            color: #166534;
+        }
+
+        .section li.caution strong {
+            color: #ea580c;
         }
         
         .section li:hover {
@@ -305,29 +327,29 @@
         
         .mentoring-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             gap: 1rem;
             margin-bottom: 1rem;
         }
         
         .mentoring-card {
-            background: #fff7ed;
-            border: 1px solid #fed7aa;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
             border-radius: 8px;
             padding: 1rem;
-            border-left: 4px solid #ea580c;
+            border-left: 4px solid #0284c7;
         }
         
         .mentoring-card h4 {
-            color: #ea580c;
+            color: #0284c7;
             margin-bottom: 0.5rem;
             font-weight: 600;
             font-size: 0.9rem;
         }
         
         .mentoring-card p {
-            color: #9a3412;
-            font-size: 0.85rem;
+            color: #0c4a6e;
+            font-size: 0.875rem;
             line-height: 1.5;
             margin: 0;
         }
@@ -379,7 +401,7 @@
         }
         
         .compatibility-description {
-            font-size: 0.85rem;
+            font-size: 0.875rem;
             line-height: 1.4;
             margin: 0;
         }
@@ -926,14 +948,14 @@
                 const parts = strength.split(' : ');
                 const title = parts[0];
                 const description = parts[1] || '';
-                return `<li><strong>${title}</strong>${description ? ' ' + description : ''}</li>`;
+                return `<li class="strength"><strong>${title}</strong>${description ? ' ' + description : ''}</li>`;
             }).join('');
 
             const cautionsHtml = data.cautions.map(caution => {
                 const parts = caution.split(' : ');
                 const title = parts[0];
                 const description = parts[1] || '';
-                return `<li><strong>${title}</strong>${description ? ' ' + description : ''}</li>`;
+                return `<li class="caution"><strong>${title}</strong>${description ? ' ' + description : ''}</li>`;
             }).join('');
 
             modalContent.innerHTML = `
