@@ -970,7 +970,11 @@
                 <div class="modal-body">
                     <div class="section">
                         <h3>🔍 특징</h3>
-                        <p>${data.fullDescription}</p>
+    <p>
+        ${Array.isArray(data.fullDescription) 
+            ? data.fullDescription.join('<br><br>') 
+            : data.fullDescription}
+    </p>
                     </div>
                     
                     <div class="section">
