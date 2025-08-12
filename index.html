@@ -1247,25 +1247,33 @@
             document.body.style.overflow = 'auto';
         }
 
-        // 검색 기능
-        function handleSearch() {
-            const query = searchInput.value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.type-card');
-            
-            cards.forEach(card => {
-                const typeCode = card.dataset.type;
-                const data = personalityTypes[typeCode];
-                
-                const isVisible = !query || 
-                    typeCode.toLowerCase().includes(query) ||
-                    data.nickname.toLowerCase().includes(query) ||
-                    data.cardDescription.toLowerCase().includes(query) ||
-                    data.fullDescription.toLowerCase().includes(query) ||
-                    data.tags.some(tag => tag.toLowerCase().includes(query));
-                
-                card.classList.toggle('hidden', !isVisible);
-            });
-        }
+// 검색 기능
+function handleSearch() {
+  const query = searchInput.value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.type-card');
+
+  // 값 안전 변환 헬퍼
+  const toText = (v) => {
+    if (Array.isArray(v)) return v.join(' ');
+    if (v == null) return '';
+    return String(v);
+  };
+  const text = (v) => toText(v).toLowerCase();
+
+  cards.forEach(card => {
+    const typeCode = card.dataset.type;
+    const data = personalityTypes[typeCode];
+
+    const isVisible = !query ||
+      typeCode.toLowerCase().includes(query) ||
+      text(data.nickname).includes(query) ||
+      text(data.cardDescription).includes(query) ||
+      text(data.fullDescription).includes(query) ||   // ← 배열도 OK
+      (Array.isArray(data.tags) && data.tags.some(tag => text(tag).includes(query)));
+
+    card.classList.toggle('hidden', !isVisible);
+  });
+}
 
         // 이벤트 리스너
         searchInput.addEventListener('input', handleSearch);
