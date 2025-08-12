@@ -1101,13 +1101,6 @@
         const searchInput = document.getElementById('searchInput');
         const modal = document.getElementById('detailModal');
         const modalContent = document.getElementById('modalContent');
-
-// 모달 스크롤을 최상단으로 이동
-modal.scrollTop = 0;
-const modalContentEl = modal.querySelector('.modal-content');
-if (modalContentEl) {
-    modalContentEl.scrollTop = 0;
-}
         
         // 카드 생성 함수
         function createTypeCard(typeCode, data) {
